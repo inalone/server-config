@@ -1,0 +1,25 @@
+---
+version: "2"
+volumes:
+  app:
+  Downloads:
+  Music:
+services:
+  slskd:
+    image: slskd/slskd
+    container_name: slskd
+    user: 1000:1000
+    environment:
+      - TZ=Europe/London
+      - SLSKD_SLSK_USERNAME=${SLSKD_SLSK_USERNAME}
+      - SLSKD_SLSK_PASSWORD=${SLSKD_SLSK_PASSWORD}
+    volumes:
+      - ./app:/app
+      - ./slskd.yml:/app/slskd.yml
+      - /mnt/Others/Downloads/Music/Soulseek:/Downloads
+      - /mnt/Others/Music:/Music
+    ports:
+      - "1011:5000"
+      - "5001:5001"
+      - "50000:50000"
+    restart: unless-stopped

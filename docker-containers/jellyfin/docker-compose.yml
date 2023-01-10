@@ -1,0 +1,12 @@
+version: '3.5'
+services:
+  jellyfin:
+    image: jellyfin/jellyfin
+    container_name: jellyfin
+    ports:
+      - "1013:8096"
+    volumes:
+      - ./config:/config
+      - ./cache:/cache
+      - /mnt/Others/:/Others
+    restart: 'unless-stopped'

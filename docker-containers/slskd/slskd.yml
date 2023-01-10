@@ -1,0 +1,5 @@
+directories:
+  downloads: /Downloads
+shares:
+  directories:
+    - /Music
