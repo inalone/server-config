@@ -8,7 +8,7 @@ services:
       db:
         condition: service_healthy
     environment:
-      - DATABASE_URL=postgres://${MINIFLUX_DB_USERNAME}:${MINIFLUX_DB_PASSWORD}@db/miniflux?sslmode=disable
+      - DATABASE_URL=postgres://miniflux:${MINIFLUX_DB_PASSWORD}@db/miniflux?sslmode=disable
       - RUN_MIGRATIONS=1
       - CREATE_ADMIN=1
       - ADMIN_USERNAME=${MINIFLUX_ADMIN_USERNAME}
@@ -17,7 +17,7 @@ services:
   db:
     image: postgres:15
     environment:
-      - POSTGRES_USER=${MINIFLUX_DB_USERNAME}
+      - POSTGRES_USER=miniflux
       - POSTGRES_PASSWORD=${MINIFLUX_DB_PASSWORD}
     volumes:
       - miniflux-db:/var/lib/postgresql/data
