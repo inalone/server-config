@@ -1,4 +1,4 @@
-for d in $HOME/docker-containers/*; do
+for d in /mnt/Docker/docker-containers/*; do
 	cd $d
 	docker compose pull
 	docker compose up -d --remove-orphans
